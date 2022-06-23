@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getAllPokemon, getPokemon } from './services/pokemon';
 import Card from './componets/Card';
+import Navbar from './componets/Navbar';
 import './App.css';
 
 
@@ -9,7 +10,7 @@ function App() {
     const [nextUrl, setNextUrl] = useState('');
     const [prevUrl, setPrevUrl] = useState('');
     const [loading, setLoading] = useState(true);
-    const initialUrl = 'https://pokeapi.co/api/v2/pokemon'
+    const initialUrl = 'https://pokeapi.co/api/v2/pokemon?limit=10'
 
     useEffect(() => {
         async function fetchData() {
@@ -22,6 +23,25 @@ function App() {
         }
         fetchData();
     }, []);
+
+    const next = async() => {
+        setLoading(true);
+        let data = await getAllPokemon(nextUrl)
+        await loadingPokemon(data.results)
+        setNextUrl(data.next);
+        setPrevUrl(data.previous);
+        setLoading(false);
+    }
+
+    const prev = async() => {
+        if (!prevUrl) return;
+        setLoading(true);
+        let data = await getAllPokemon(prevUrl)
+        await loadingPokemon(data.results)
+        setNextUrl(data.next);
+        setPrevUrl(data.previous);
+        setLoading(false);
+    }
 
     const loadingPokemon = async(data) => {
         let _pokemonData = await Promise.all(
@@ -38,6 +58,13 @@ function App() {
                 loading ? < h1 > Cargando... < /h1> : ( <
                 >
                 <
+                Navbar / >
+                <
+                div className = 'btn' >
+                <
+                button onClick = { prev } > Prev < /button> <
+                button onClick = { next } > Next < /button> <
+                /div> <
                 div className = 'grid-container' > {
                     PokemonData.map((pokemon, i) => {
                         return <Card key = { i }
@@ -45,6 +72,11 @@ function App() {
                         />
                     })
                 } <
+                /div> <
+                div className = 'btn' >
+                <
+                button onClick = { prev } > Prev < /button> <
+                button onClick = { next } > Next < /button> <
                 /div> <
                 />
             )
