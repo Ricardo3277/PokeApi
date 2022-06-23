@@ -1,4 +1,5 @@
 import React from "react";
+import './style.css';
 
 function Card({ pokemon }) {
     return ( <
@@ -10,7 +11,7 @@ function Card({ pokemon }) {
         alt = "" / >
         <
         /div> <
-        div className = "Card__Name" > { pokemon.name } < /div> <
+        div className = "Card__name" > { pokemon.name } < /div> <
         div className = "Card__types" > {
             pokemon.types.map(type => {
                 return <div className = "Card__type" > { type.type.name } < /div>
@@ -21,17 +22,17 @@ function Card({ pokemon }) {
         <
         div className = "Card__data Card__data--weight" >
         <
-        p className = "title" > Weight < /p> <
+        p className = "title" > Peso < /p> <
         p > { pokemon.weight } < /p> <
         /div> <
         div className = "Card__data Card__data--height" >
         <
-        p className = "title" > Height < /p> <
+        p className = "title" > Altura < /p> <
         p > { pokemon.height } < /p> <
         /div> <
         div className = "Card__data Card__data--ability" >
         <
-        p className = "title" > Ability < /p> <
+        p className = "title" > Habilidad < /p> <
         p > { pokemon.abilities[0].ability.name } < /p> <
         /div> <
         /div> <
