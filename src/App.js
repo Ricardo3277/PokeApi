@@ -62,8 +62,8 @@ function App() {
                 <
                 div className = 'btn' >
                 <
-                button onClick = { prev } > Prev < /button> <
-                button onClick = { next } > Next < /button> <
+                button onClick = { prev } > Anterior < /button> <
+                button onClick = { next } > Siguiente < /button> <
                 /div> <
                 div className = 'grid-container' > {
                     PokemonData.map((pokemon, i) => {
@@ -75,8 +75,8 @@ function App() {
                 /div> <
                 div className = 'btn' >
                 <
-                button onClick = { prev } > Prev < /button> <
-                button onClick = { next } > Next < /button> <
+                button onClick = { prev } > Anterior < /button> <
+                button onClick = { next } > Siguiente < /button> <
                 /div> <
                 />
             )
