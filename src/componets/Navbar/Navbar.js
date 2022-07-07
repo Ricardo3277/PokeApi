@@ -4,8 +4,7 @@ import './style.css';
 function Navbar() {
     return ( <
         div className = "Navbar" >
-        Pokedex <
-        /div>
+        Pokedex </div>
     );
 }
 
